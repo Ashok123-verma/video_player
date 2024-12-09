@@ -1,37 +1,96 @@
 /* Container for the video player */
 .video-player-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Full-screen height */
-  padding: 20px;
-  background: linear-gradient(135deg, #1e293b, #0f172a); /* Gradient background */
-  color: #ffffff; /* White text for any error message */
+  flex-direction: column; /* Stack items vertically */
+  /* align-items: center; */
+  justify-content: flex-start; /* Ensure it stays at the top */
+  min-height: calc(100vh - 60px); /* Full-screen height minus navbar height */
+  padding: 20px; /* Add some padding */
+  color: #ffffff; /* White text for error messages */
+  font-family: "Arial", sans-serif;
 }
 
-/* Center the iframe with consistent styling */
+/* Responsive iframe container */
 .iframe-container {
+  position: relative;
   width: 100%;
-  max-width: 700px; /* Fixed max-width for the video */
-  aspect-ratio: 16 / 9; /* Maintain the 16:9 aspect ratio */
-  background-color: #000; /* Black background for the iframe */
-  border-radius: 8px; /* Rounded corners */
-  overflow: hidden; /* No overflow outside the container */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Soft shadow */
+  max-width: 1000px; /* Limit width for larger devices */
+  aspect-ratio: 16 / 9; /* Maintain a 16:9 aspect ratio */
+  background-color: #000; /* Black background */
+  border-radius: 12px; /* Rounded corners */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for the iframe container */
+.iframe-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
 }
 
 /* Error message styling */
 .video-player-container p {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #f87171; /* Soft red for error message */
+  color: #ff5f5f; /* Vibrant red for error messages */
   text-align: center;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  padding: 10px 20px;
+  border-radius: 8px;
   margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Make the iframe responsive */
+/* Responsive iframe */
 iframe {
   width: 100%;
   height: 100%;
-  border: none; /* Remove default borders */
+  border: none; /* No borders */
+}
+
+/* Media Queries for Smaller Devices */
+
+/* Tablets and Medium Devices */
+@media (max-width: 768px) {
+  .iframe-container {
+    max-width: 60%; /* Adjust width for tablets */
+    border-radius: 8px;
+  }
+
+  .video-player-container {
+    padding: 15px; /* Reduce padding for smaller devices */
+  }
+}
+
+/* Smartphones and Small Devices */
+@media (max-width: 480px) {
+  .iframe-container {
+    max-width: 100%; /* Full width on mobile devices */
+    border-radius: 6px;
+  }
+
+  .video-player-container {
+    padding: 10px; /* Further reduce padding */
+    min-height: calc(100vh - 60px); /* Ensure it stays below navbar */
+    justify-content: flex-start; /* Prevent it from centering vertically */
+  }
+
+  .video-player-container p {
+    font-size: 1.2rem; /* Adjust font size for error messages */
+    padding: 8px 16px;
+  }
+}
+
+/* Tablets (768px to 1199px) */
+@media (max-width: 1500px) and (min-width: 768px) {
+  .iframe-container {
+    max-width: 70%; /* Slightly narrower videos on tablets */
+    border-radius: 10px; /* Adjust border radius for smaller devices */
+  }
+
+  .video-player-container p {
+    font-size: 1.2rem; /* Reduce font size for error messages */
+    padding: 8px 16px;
+  }
 }
