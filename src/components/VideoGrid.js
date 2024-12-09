@@ -2,38 +2,57 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../styles/videoGrid.css";
 
-// Sample category videos with dummy data
+// Dummy data for categories and videos
 const categoryVideos = {
-  Action: Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    title: `Action Video ${i + 1}`,
-    link: `https://www.youtube.com/embed/js0ZoGcCL0w?autoplay=1`, // YouTube embed link
-    thumbnail: `https://via.placeholder.com/200x150?text=Action+Video+${i + 1}`,
-  })),
-  Comedy: Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    title: `Comedy Video ${i + 1}`,
-    link: `https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1`, // YouTube embed link
-    thumbnail: `https://via.placeholder.com/200x150?text=Comedy+Video+${i + 1}`,
-  })),
-  Drama: Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    title: `Drama Video ${i + 1}`,
-    link: `https://www.youtube.com/embed/LsoLEjrDogU?autoplay=1`, // YouTube embed link
-    thumbnail: `https://via.placeholder.com/200x150?text=Drama+Video+${i + 1}`,
-  })),
-  Horror: Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    title: `Horror Video ${i + 1}`,
-    link: `https://www.youtube.com/embed/ZwD0_RQG7oM?autoplay=1`, // YouTube embed link
-    thumbnail: `https://via.placeholder.com/200x150?text=Horror+Video+${i + 1}`,
-  })),
-  Romance: Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    title: `Romance Video ${i + 1}`,
-    link: `https://www.youtube.com/embed/jz6kjS_EHb0?autoplay=1`, // YouTube embed link
-    thumbnail: `https://via.placeholder.com/200x150?text=Romance+Video+${i + 1}`,
-  })),
+  Action: [
+    {
+      id: 1,
+      title: "Action Video 1",
+      link: "https://www.youtube.com/embed/AlMfhQQAIhU?si=HNH4GuIB43x6VhmV",
+      thumbnail: "https://w0.peakpx.com/wallpaper/719/83/HD-wallpaper-the-lords-of-the-fallen-the-lords-of-the-fallen-2023-games-ps5-games-ps-games-games.jpg",
+    },
+    {
+      id: 2,
+      title: "Action Video 2",
+      link: "https://www.youtube.com/embed/vAXrKz0cz4w?si=wYpvMFcqeFTcnsJ2",
+      thumbnail: "https://i.ytimg.com/vi/dBd74snpV9U/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDprZuZ_gKoSQPla5rnwTS-_uoxWw",
+    },
+    {
+      id: 3,
+      title: "Action Video 3",
+      link: "https://www.youtube.com/embed/gHq5M0MQSDk?si=OHZ7ttgr_Q_0pFkQ",
+      thumbnail: "https://clarityandflow.wordpress.com/wp-content/uploads/2011/01/aod-logo.jpg",
+    },
+  ],
+  Drama: [
+    {
+      id: 1,
+      title: "Drama Video 1",
+      link: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+      thumbnail: "https://via.placeholder.com/200x150?text=Comedy+Video+1",
+    },
+    {
+      id: 2,
+      title: "Drama Video 2",
+      link: "https://www.youtube.com/embed/jZ2Ww5XWwFw?autoplay=1",
+      thumbnail: "https://via.placeholder.com/200x150?text=Comedy+Video+2",
+    },
+  ],
+  Comedy: [
+    {
+      id: 1,
+      title: "Comedy Video 1",
+      link: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+      thumbnail: "https://via.placeholder.com/200x150?text=Comedy+Video+1",
+    },
+    {
+      id: 2,
+      title: "Comedy Video 2",
+      link: "https://www.youtube.com/embed/jZ2Ww5XWwFw?autoplay=1",
+      thumbnail: "https://via.placeholder.com/200x150?text=Comedy+Video+2",
+    },
+  ],
+  // Add other categories as needed
 };
 
 const VideoGrid = () => {
@@ -41,7 +60,6 @@ const VideoGrid = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    // Simulate fetching videos for the selected category
     setVideos(categoryVideos[category] || []);
   }, [category]);
 
@@ -53,7 +71,7 @@ const VideoGrid = () => {
           <Link
             key={video.id}
             to={`/player/${video.id}`}
-            state={{ videoLink: video.link }}
+            state={{ videoLink: video.link }} // Pass single video link to the player
             className="video-card"
           >
             <img src={video.thumbnail} alt={video.title} />

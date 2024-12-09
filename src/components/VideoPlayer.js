@@ -10,6 +10,8 @@ const VideoPlayer = () => {
   useEffect(() => {
     if (location.state && location.state.videoLink) {
       setVideoLink(location.state.videoLink);
+    } else {
+      setIsError(true);  // If no videoLink is found, set error state
     }
   }, [location]);
 
@@ -28,10 +30,11 @@ const VideoPlayer = () => {
             height="auto"
             src={videoLink}
             frameBorder="0"
+            scrolling="no"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             title="Video Player"
-            onError={handleVideoError}
+            onError={handleVideoError}  // Handle error loading the video
           ></iframe>
         </div>
       )}
