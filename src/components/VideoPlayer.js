@@ -11,12 +11,23 @@ const VideoPlayer = () => {
     if (location.state && location.state.videoLink) {
       setVideoLink(location.state.videoLink);
     } else {
-      setIsError(true);  // If no videoLink is found, set error state
+      setIsError(true);
     }
   }, [location]);
 
   const handleVideoError = () => {
     setIsError(true);
+  };
+
+  const toggleFullscreen = () => {
+    const iframeContainer = document.querySelector(".iframe-container");
+    if (iframeContainer.requestFullscreen) {
+      iframeContainer.requestFullscreen();
+    } else if (iframeContainer.webkitRequestFullscreen) {
+      iframeContainer.webkitRequestFullscreen(); // For Safari
+    } else if (iframeContainer.msRequestFullscreen) {
+      iframeContainer.msRequestFullscreen(); // For IE/Edge
+    }
   };
 
   return (
@@ -27,15 +38,16 @@ const VideoPlayer = () => {
         <div className="iframe-container">
           <iframe
             width="100%"
-            height="auto"
+            height="100%"
             src={videoLink}
             frameBorder="0"
             scrolling="no"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowFullScreen
             title="Video Player"
-            onError={handleVideoError}  // Handle error loading the video
+            onError={handleVideoError}
           ></iframe>
+          <button onClick={toggleFullscreen}>Fullscreen</button>
         </div>
       )}
     </div>
