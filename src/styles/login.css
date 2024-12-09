@@ -1,0 +1,192 @@
+/* LoginPage.css */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  animation: fadeIn 1.5s ease-in-out; /* Add fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-form {
+  /* background-color: #f9f9f9; */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px aqua;
+  animation: scaleUp 0.8s ease-in-out; /* Add scale-up animation */
+  width: 20%;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  border: 2px solid black;
+  transition: all 0.3s ease; /* Add smooth transition */
+
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Glow effect on focus */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add smooth transition and hover scale effect */
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+button:active {
+  transform: scale(0.95); /* Slight shrinking effect on click */
+}
+
+/* Input container with floating label */
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Input field styles */
+.input-container input {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  background: none;
+  position: relative;
+  margin: 0;
+}
+
+/* Label styles */
+.input-container label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #888;
+  pointer-events: none;
+  background: #fff;
+  padding: 0 5px;
+  transition: all 0.3s ease;
+}
+
+/* Floating label effect when the input is focused or has a value */
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+  top: -10px;
+  color: aqua;
+}
+
+
+.input-container label{
+  background: none;
+}
+
+
+/* Media Queries for Advanced Responsiveness */
+
+/* Extra Small Devices (phones < 480px) */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 5px;
+  }
+
+  .login-form {
+    width: 95%; /* Take up most of the screen width */
+    padding: 15px;
+    border-radius: 5px; /* Reduce border radius for compact look */
+  }
+
+  input {
+    font-size: 14px; /* Adjust font size */
+    padding: 10px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Small Devices (phones and smaller tablets 481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .login-form {
+    width: 40%; /* Slightly smaller width for tablets */
+    padding: 20px;
+  }
+
+  input {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  button {
+    font-size: 15px;
+  }
+}
+
+/* Medium Devices (tablets and small laptops 769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .login-form {
+    width: 40%; /* Larger width for tablets */
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}
+
+/* Large Devices (desktops 1025px - 1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .login-form {
+    width: 40%;
+  }
+}
+
+/* Extra Large Devices (desktops > 1200px) */
+@media (min-width: 1201px) {
+  .login-form {
+    width: 30%; /* Compact width for extra-large screens */
+  }
+}

@@ -1,0 +1,166 @@
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center items vertically */
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  box-shadow: 0 0 18px blue;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+/* Category links container */
+.categories {
+  display: flex;
+  flex-wrap: wrap; /* Wrap categories if they overflow */
+  align-items: center;
+  gap: 1rem; /* Add spacing between category links */
+}
+
+/* Individual category links */
+.category-link {
+  margin: 0;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem; /* Default font size */
+  transition: color 0.3s ease;
+}
+
+.category-link:hover {
+  color: aqua; /* Highlight effect on hover */
+}
+
+/* Navbar actions (theme toggle and logout button) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Add spacing between buttons */
+}
+
+.theme-toggle,
+.logout-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem; /* Default button font size */
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover,
+.logout-button:hover {
+  background: #0056b3;
+  transform: scale(1.05); /* Slight scale effect */
+}
+
+.theme-toggle:active,
+.logout-button:active {
+  transform: scale(0.95); /* Shrink effect on click */
+}
+
+/* Media Queries for Responsive Design */
+
+/* Extra small devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+    gap: 1rem; /* Add spacing between stacked items */
+  }
+
+  .categories {
+    width: 100%; /* Full width for categories */
+    justify-content: flex-start;
+    flex-wrap: wrap; /* Allow wrapping for categories */
+  }
+
+  .category-link {
+    font-size: 0.9rem; /* Smaller font size for small screens */
+    margin: 0.5rem 0;
+  }
+
+  .nav-actions {
+    width: 100%; /* Full width for actions */
+    justify-content: flex-start;
+  }
+
+  .theme-toggle,
+  .logout-button {
+    width: 48%; /* Split buttons evenly */
+    padding: 0.4rem;
+  }
+}
+
+/* Small devices (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem;
+  }
+
+  .categories {
+    justify-content: flex-start; /* Align categories to the left */
+    gap: 0.8rem;
+  }
+
+  .category-link {
+    font-size: 0.95rem;
+  }
+
+  .theme-toggle,
+  .logout-button {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+/* Medium devices (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .categories {
+    justify-content: center; /* Center categories on medium devices */
+    gap: 1rem;
+  }
+
+  .category-link {
+    font-size: 1rem;
+  }
+
+  .theme-toggle,
+  .logout-button {
+    font-size: 0.9rem;
+  }
+}
+
+/* Large devices (1025px - 1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .navbar {
+    padding: 1.2rem;
+  }
+
+  .categories {
+    justify-content: space-between;
+    gap: 1.2rem;
+  }
+
+  .theme-toggle,
+  .logout-button {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Extra large devices (min-width: 1201px) */
+@media (min-width: 1201px) {
+  .categories {
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .theme-toggle,
+  .logout-button {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+  }
+}
